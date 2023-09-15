@@ -36,6 +36,3 @@ def p72finder(queryfile, subjectfile, GenomeColumn = 'Genome', SequenceColumn = 
         print("WARNING!!! No full length B646L found in the submitted sequence. A manual double-check of raw blast output is recommended, and genotyping results are highly likely to be illegitamite.")
     elif result.iloc[0]['length'] <= 635:
         print("Warning - No full length B646L found in submitted sequence. A manual double-check of the raw blast output is recommended, there are potentially multiple genotypes overlapping.")
-
-#Example Usage
-p72finder(queryfile = '.\\ASFVG_protein.fa', subjectfile = '.\\23-07-07_Representative_p72_newTED.xlsx')
