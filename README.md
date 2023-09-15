@@ -1,6 +1,6 @@
 # B646LGenotypingTool
 
-Note that this tool requires that BLAST is installed on your computer, and the custom file includes the P72 genotypes.
+Note that this tool requires that BLAST is installed on your computer, and the custom file includes the P72 genotypes. The .\\23-07-07_Representative_p72_newTED.xlsx file must always be referenced as subject for usage. Query should be the fasta file you are examining.
 
 ### Example Usage
 This is an example of using the files located within this folder. The ASFVG file is an example one - the Representative_p72 file should always be used.
