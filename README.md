@@ -13,5 +13,5 @@ options:
 ### Example Usage
 This is an example of using the files located within this folder. The ASFVG file is an example one - the Representative_p72 file should always be used.
 
-    python python .\BlastAlgorithm.py -i .\ASFVG_protein.fa -e .\23-11-13_Representative_p72.xlsx
+    python .\BlastAlgorithm.py -i .\ASFVG_protein.fa -e .\23-11-13_Representative_p72.xlsx
   
