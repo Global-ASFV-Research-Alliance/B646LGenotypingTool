@@ -1,6 +1,9 @@
 # B646LGenotypingTool
 
-Note that this tool requires that BLAST is installed on your computer, and the custom file includes the P72 genotypes. The .\\23-11-13_Representative_p72.xlsx file must always be referenced as excel for usage. Query should be the fasta file you are examining.
+Note that this tool requires that BLAST and python are installed on your computer, and the custom file includes the P72 genotypes. The .\23-11-13_Representative_p72.xlsx file must always be referenced as excel for usage. Query should be the fasta file you are examining.
+
+### OSs Tested
+This was tested on windows. There is also a website, https://asfvgenomics.com/, that has an equivilent tool available for online usage.
 
 ### Help Printout
 
