@@ -8,10 +8,10 @@ This was tested on windows. There is also a website, https://asfvgenomics.com/, 
 ### Help Printout
 
 options:
+
+-i, --input, Input Fasta File Location
   
-  -i, --input, Input Fasta File Location
-  
-  -e, --excel, Input Excel File Location 
+-e, --excel, Input Excel File Location 
 
 ### Example Usage
 This is an example of using the files located within this folder. The ASFVG file is an example one - the Representative_p72 file should always be used.
