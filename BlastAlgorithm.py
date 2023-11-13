@@ -1,5 +1,11 @@
 import pandas as pd
 from Bio import SeqIO
+import argparse
+
+argParser = argparse.ArgumentParser()
+argParser.add_argument("-i", "--input", type= str, help="Input Fasta File Location")
+argParser.add_argument("-e", "--excel", type= str, help="Input Excel File Location")
+args = argParser.parse_args()
 
 def p72finder(queryfile, subjectfile, GenomeColumn = 'Genome', SequenceColumn = 'Sequence', IsolateColumn = 'Isolate', GenotypeColumn = 'GenotypeNumber', outputname_fasta = 'P72.fasta', outputlocation = 'blastxout.txt'):
     
@@ -30,9 +36,19 @@ def p72finder(queryfile, subjectfile, GenomeColumn = 'Genome', SequenceColumn = 
     #ReadBlastResults
     prediction = pd.read_csv(outputlocation, sep = '\t', names=('qseqid', 'sseqid', 'evalue', 'pident', 'bitscore', 'length', 'qlen', 'slen', 'qstart', 'qend', 'sstart', 'send', 'qseq', 'sseq')).drop_duplicates(["qseq"])
     result = prediction.merge(subject_excel, left_on='sseqid', right_on=GenomeColumn)
+    
+    MaxBitscore = result['bitscore'].max()
+    MaxPident = result[result['bitscore'] == MaxBitscore]['pident'].max()
+
+    # print(MaxPident)
+    result = result[(result['bitscore'] == MaxBitscore) & (result['pident'] == MaxPident)]
+        
+    
     print('Predicted Genotype: ' + str(result.iloc[0][GenotypeColumn]) + "\n" + "The B646L(P72) encoded by your genome is " + str(result.iloc[0]['pident']) + "%" + " identical to the " + str(result.iloc[0]['length']) + ' ammino acids in ' + str(result.iloc[0][IsolateColumn]) + ' (' + str(result.iloc[0][GenomeColumn]) + ')')
     
     if result.iloc[0]['length'] <= 600:
         print("WARNING!!! No full length B646L found in the submitted sequence. A manual double-check of raw blast output is recommended, and genotyping results are highly likely to be illegitamite.")
     elif result.iloc[0]['length'] <= 635:
         print("Warning - No full length B646L found in submitted sequence. A manual double-check of the raw blast output is recommended, there are potentially multiple genotypes overlapping.")
+
+p72finder(queryfile = args.input, subjectfile = args.excel)
